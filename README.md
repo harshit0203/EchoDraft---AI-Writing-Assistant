@@ -1,4 +1,4 @@
-EchoDraft — AI Writing Assistant
+EchoDraft — AI Writing Assistant 
 A full‑stack, GenAI‑powered writing assistant that combines a modern Next.js frontend with a FastAPI backend, secure JWT authentication, MongoDB (Motor/asyncio), and LangChain + LangGraph orchestration around ChatOpenAI (gpt‑4.1‑nano).
 
 Table of contents
