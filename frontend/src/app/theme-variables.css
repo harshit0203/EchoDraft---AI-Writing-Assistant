@@ -1,0 +1,21 @@
+:root {
+  --app-bg-main: #f8fafc;
+  --app-bg-sidebar: #ffffff;
+  --app-bg-card: #ffffff;
+  --app-text-primary: #0f172a;
+  --app-text-secondary: #64748b;
+  --app-text-muted: #94a3b8;
+  --app-border: #e2e8f0;
+  --app-border-hover: #818cf8;
+}
+
+.mui-colorScheme-dark {
+  --app-bg-main: #0f172a;
+  --app-bg-sidebar: #1e293b;
+  --app-bg-card: #334155;
+  --app-text-primary: #f1f5f9;
+  --app-text-secondary: #cbd5e1;
+  --app-text-muted: #94a3b8;
+  --app-border: #475569;
+  --app-border-hover: #6366f1;
+}
