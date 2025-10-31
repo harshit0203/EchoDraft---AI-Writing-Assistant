@@ -1,80 +1,136 @@
-EchoDraft — AI Writing Assistant 
-A full‑stack, GenAI‑powered writing assistant that combines a modern Next.js frontend with a FastAPI backend, secure JWT authentication, MongoDB (Motor/asyncio), and LangChain + LangGraph orchestration around ChatOpenAI (gpt‑4.1‑nano).
+# EchoDraft: AI-Powered Writing Assistant
 
-Table of contents
+<div align="center">
 
-Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-14.x-black?logo=next.js)](https://nextjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-teal?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![LangChain](https://img.shields.io/badge/LangChain-blue?logo=langchain)](https://www.langchain.com/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4.1--Nano-lightgreen?logo=openai)](https://openai.com/)
 
-Key features
+**A full-stack, GenAI-powered writing assistant to streamline your content creation process.**
 
-Architecture
+</div>
 
-Tech stack
+---
 
-Repository layout
+**EchoDraft** is an intelligent writing assistant designed to help users with content ideation, drafting, and refinement. By combining a clean, responsive Next.js frontend with a powerful FastAPI backend, EchoDraft provides a seamless and efficient writing experience.
 
-Overview
-EchoDraft streamlines content ideation, drafting, and refinement using a lightweight LLM with deterministic orchestration, while providing a clean, responsive UI and a secure, scalable API layer.
+At its core, EchoDraft uses deterministic AI agent orchestration via **LangChain** and **LangGraph**, powered by the lightweight but capable **GPT-4.1-Nano** model. This ensures high-quality content generation while maintaining speed and control.
 
-Key features
+<br/>
 
-Auth: Email/password with JWT access tokens and refreshless session strategy.
+<p align="center">
+  <img src="https://your-image-host.com/echodraft_editor.png" alt="EchoDraft Editor Interface" width="800"/>
+</p>
 
-Writing tools: Prompted generation, guided revisions, style presets, and structured outputs.
+## ✨ Key Features
 
-AI orchestration: Reusable chains/graphs for prompt hygiene, safety passes, and tool calls.
+-   **AI-Powered Content Generation**: Quickly generate drafts, brainstorm ideas, or refine existing text for articles, emails, social media posts, and more.
+-   **Deterministic Agent Orchestration**: Utilizes **LangGraph** to create predictable and reliable AI workflows, ensuring consistent output quality.
+-   **Clean & Responsive UI**: A modern, minimalist user interface built with Next.js and Tailwind CSS provides a distraction-free writing environment.
+-   **Secure User Authentication**: Employs JWT-based authentication to protect user accounts and ensure that all generated content and user data remain private.
+-   **Asynchronous Backend**: The FastAPI backend uses **Motor** with `asyncio` for non-blocking database operations with MongoDB, ensuring the API is fast and scalable.
+-   **User-Specific Content Management**: Users can save, edit, and manage their generated drafts through a personal dashboard.
 
-Persistence: User profiles, settings, and content history in MongoDB (async Motor).
+## 🚀 Tech Stack
 
-Modern UI: Next.js + React with Redux state, TailwindCSS, Material UI, and shadcn/ui.
+EchoDraft is built on a modern, robust, and scalable technology stack, perfect for a high-performance AI application.
 
-Configurable: Environment‑driven setup for API base URL, model, and rate limiting.
+### Frontend
+-   **Framework**: [Next.js](https://nextjs.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
 
-Architecture
+### Backend
+-   **Framework**: [FastAPI (Python)](https://fastapi.tiangolo.com/)
+-   **Asynchronous MongoDB Driver**: [Motor](https://motor.readthedocs.io/)
+-   **Authentication**: [JWT (JSON Web Tokens)](https://jwt.io/)
+-   **Database**: [MongoDB](https://www.mongodb.com/)
 
-Frontend (Next.js): React app that authenticates with the API, manages drafts, and invokes generation endpoints.
+### Artificial Intelligence
+-   **Core AI Orchestration**: [LangChain](https://www.langchain.com/)
+-   **Stateful Agent Architecture**: [LangGraph](https://langchain-ai.github.io/langgraph/)
+-   **LLM**: **GPT-4.1-Nano** (via ChatOpenAI)
 
-Backend (FastAPI): Async REST API, auth, validation, and endpoints for generation and user settings.
+## 🛠️ Getting Started
 
-Database (MongoDB): Async Motor client, indexes, and per‑user collections/documents.
+Follow these instructions to set up EchoDraft locally for development and testing.
 
-Orchestration (LangChain + LangGraph): Nodes for input normalization, prompt assembly, model call, post‑processing, and optional enrichment.
+### Prerequisites
 
-Model: ChatOpenAI gpt‑4.1‑nano for fast, economical generations.
+-   Node.js (v18 or later)
+-   Python (v3.10 or later)
+-   MongoDB instance (local or cloud-based)
+-   An OpenAI API key
 
-Tech stack
+### 1. Clone the Repository
 
-Frontend: Next.js, React, Redux Toolkit, TailwindCSS, Material UI, shadcn/ui
+git clone https://github.com/harshit0203/echodraft.git
+cd echodraft
 
-Backend: FastAPI, Pydantic, Uvicorn
 
-Auth: JWT (HS256), password hashing with bcrypt
+### 2. Backend Setup
 
-Database: MongoDB with Motor (asyncio)
+Navigate to the `backend` directory, create and activate a virtual environment, and install the necessary dependencies.
 
-GenAI: OpenAI client, LangChain, LangGraph
+cd backend
+python -m venv venv
+source venv/bin/activate # On Windows: venv\Scripts\activate
 
-Tooling: Python 3.11+, Node 18+
+pip install -r requirements.txt
 
-Repository layout
-.
-├─ backend/
-│ ├─ app/
-│ │ ├─ main.py
-│ │ ├─ auth.py
-│ │ ├─ models.py
-│ │ └─ schemas.py
-│ ├─ config.py
-│ ├─ database/init.py
-│ ├─ routes/
-│ │ ├─ init.py
-│ │ ├─ generate_text.py
-│ │ ├─ login.py
-│ │ ├─ password_reset.py
-│ │ ├─ settings.py
-│ │ └─ signup.py
-│ └─ workflow/
-│ ├─ init.py
-│ └─ enrichment_ai.py
-└─ frontend/
-└─ (Next.js app: pages/app, app router or pages router, components, store, ui)
+
+Create a `.env` file in the `backend` directory and add your environment variables:
+
+
+MONGO_URI="your-mongodb-connection-string"
+JWT_SECRET="your-super-secret-jwt-key"
+OPENAI_API_KEY="your-openai-api-key"
+JWT_ALGORITHM="your-jwt-algorithm"
+ACCESS_TOKEN_EXPIRE_MINUTES="your-expiry-minutes" (prefer 30)
+
+
+Run the FastAPI backend server:
+
+uvicorn app.main:app --reload
+
+The backend API will be available at `http://localhost:8000`.
+
+### 3. Frontend Setup
+
+In a separate terminal, navigate to the `frontend` directory and install the packages.
+
+cd ../frontend
+npm install
+
+
+Create a `.env.local` file to point to your backend API:
+
+NEXT_PUBLIC_API_URL="http://localhost:8000"
+
+
+Run the Next.js development server:
+
+npm run dev
+
+The EchoDraft application is now running at `http://localhost:3000`.
+
+## 🤝 Contributing
+
+We welcome contributions of all kinds! If you have an idea for a new feature or have found a bug, please feel free to open an issue or submit a pull request.
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/NewCoolFeature`)
+3.  Commit your Changes (`git commit -m 'Add some NewCoolFeature'`)
+4.  Push to the Branch (`git push origin feature/NewCoolFeature`)
+5.  Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
+
+---
+<div align="center">
+  Crafted with care by Harshit Sharma
+</div>
